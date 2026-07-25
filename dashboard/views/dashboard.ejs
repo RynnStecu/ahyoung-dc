@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include("partials/head", { title: "Dashboard" }) %>
+</head>
+<body>
+  <div class="layout">
+    <%- include("partials/sidebar") %>
+
+    <main class="content">
+      <header class="content-header">
+        <h1>Overview</h1>
+        <p class="subtitle">Ringkasan bot &amp; daftar user ter-track</p>
+      </header>
+
+      <section class="stat-grid">
+        <div class="stat-card glass">
+          <span class="stat-label">Server</span>
+          <span class="stat-value"><%= stats.servers %></span>
+        </div>
+        <div class="stat-card glass">
+          <span class="stat-label">User Ter-track</span>
+          <span class="stat-value"><%= stats.trackedUsers %></span>
+        </div>
+        <div class="stat-card glass">
+          <span class="stat-label">Plugin Aktif</span>
+          <span class="stat-value"><%= stats.plugins %></span>
+        </div>
+        <div class="stat-card glass">
+          <span class="stat-label">Ping</span>
+          <span class="stat-value"><%= stats.ping %>ms</span>
+        </div>
+      </section>
+
+      <section class="panel glass">
+        <div class="panel-header">
+          <h2>List User</h2>
+          <form method="GET" action="/dashboard" class="guild-select-form">
+            <select name="guild" onchange="this.form.submit()">
+              <% guilds.forEach(g => { %>
+                <option value="<%= g.id %>" <%= g.id === selectedGuild ? "selected" : "" %>><%= g.name %></option>
+              <% }) %>
+            </select>
+          </form>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Level</th>
+                <th>XP</th>
+                <th>Total XP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (users.length === 0) { %>
+                <tr><td colspan="4" class="empty-row">Belum ada data user di server ini.</td></tr>
+              <% } %>
+              <% users.forEach(u => { %>
+                <tr>
+                  <td><code><%= u.userId %></code></td>
+                  <td><span class="badge">Lv. <%= u.level %></span></td>
+                  <td><%= u.xp %></td>
+                  <td><%= u.totalXp %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
