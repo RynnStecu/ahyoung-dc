@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://litter.catbox.moe/fsmpif.jpg" alt="Ahyoung Discord Bot" width="100%" style="border-radius:12px"/>
+<img src="https://athars.space/uploads/21667785.jpeg" alt="Ahyoung Discord Bot" width="100%" style="border-radius:12px"/>
 
 <br/>
 <br/>
