@@ -1,0 +1,36 @@
+<aside class="sidebar glass">
+  <div class="sidebar-brand">
+    <span class="brand-dot"></span>
+    <span><%= botName %></span>
+  </div>
+
+  <% if (typeof currentUser !== "undefined" && currentUser) { %>
+    <div class="sidebar-user">
+      <img src="<%= currentUser.avatar %>" alt="<%= currentUser.username %>" />
+      <div>
+        <span class="sidebar-user-label">Owner</span>
+        <span class="sidebar-user-name"><%= currentUser.username %></span>
+      </div>
+    </div>
+  <% } %>
+
+  <nav class="sidebar-nav">
+    <a href="/dashboard" class="nav-item <%= page === 'dashboard' ? 'active' : '' %>">
+      <span class="nav-icon">👤</span> List User
+    </a>
+    <a href="/leaderboard" class="nav-item <%= page === 'leaderboard' ? 'active' : '' %>">
+      <span class="nav-icon">🏆</span> Leaderboard
+    </a>
+    <a href="/plugins" class="nav-item <%= page === 'plugins' ? 'active' : '' %>">
+      <span class="nav-icon">🔌</span> Plugins
+    </a>
+    <a href="/servers" class="nav-item <%= page === 'servers' ? 'active' : '' %>">
+      <span class="nav-icon">🌐</span> List Server
+    </a>
+    <a href="/broadcast" class="nav-item <%= page === 'broadcast' ? 'active' : '' %>">
+      <span class="nav-icon">📢</span> Broadcast
+    </a>
+  </nav>
+
+  <a href="/logout" class="logout-btn">⎋ Logout</a>
+</aside>
