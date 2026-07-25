@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include("partials/head", { title: "Servers" }) %>
+</head>
+<body>
+  <div class="layout">
+    <%- include("partials/sidebar") %>
+
+    <main class="content">
+      <header class="content-header">
+        <h1>List Server</h1>
+        <p class="subtitle">Semua server tempat bot terpasang (<%= guilds.length %>)</p>
+      </header>
+
+      <section class="server-grid">
+        <% guilds.forEach(g => { %>
+          <div class="server-card glass">
+            <div class="server-icon">
+              <% if (g.icon) { %>
+                <img src="<%= g.icon %>" alt="<%= g.name %>" />
+              <% } else { %>
+                <span class="server-icon-fallback"><%= g.name.charAt(0) %></span>
+              <% } %>
+            </div>
+            <div class="server-info">
+              <h3><%= g.name %></h3>
+              <p class="server-id"><code><%= g.id %></code></p>
+              <p class="server-meta">👥 <%= g.memberCount %> member</p>
+              <p class="server-meta">👑 Owner: <code><%= g.ownerId %></code></p>
+            </div>
+          </div>
+        <% }) %>
+      </section>
+    </main>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
