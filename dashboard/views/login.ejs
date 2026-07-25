@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include("partials/head", { title: "Login" }) %>
+</head>
+<body class="login-body">
+  <div class="login-card glass">
+    <div class="login-brand">
+      <span class="brand-dot"></span>
+      <h1><%= botName %></h1>
+    </div>
+    <p class="login-subtitle">Dashboard ini khusus owner bot. Masuk pakai akun Discord kamu.</p>
+
+    <% if (error) { %>
+      <div class="alert alert-error"><%= error %></div>
+    <% } %>
+
+    <a href="<%= authorizeUrl %>" class="btn btn-primary btn-block btn-discord">
+      <span class="discord-icon">🡒</span> Login with Discord
+    </a>
+
+    <p class="login-note">Cuma akun yang ada di <code>global.owner</code> yang bisa masuk. Akun lain otomatis ditolak.</p>
+  </div>
+</body>
+</html>
